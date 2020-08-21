@@ -3,6 +3,13 @@ const express = require('express');
 // express app
 const app = express();
 
+
+const server  = require('./server.js');
+app.use('/home', server);
+
+const games = require('./gamesServer.js')
+app.use('./games', games);
+
 // mongoose
 const mongoose = require('mongoose');
 
