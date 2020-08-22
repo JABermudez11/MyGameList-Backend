@@ -20,6 +20,7 @@ const gameSchema = require('./models/gameSchema');
 const userSchema = require('./models/userSchema');
 
 // connects to mongodb 
+
 const dbURI = 'mongodb+srv://KevinTran:Testing123@game-data.xi8ae.mongodb.net/game-dataretryWrites=true&w=majority';
 mongoose.connect(dbURI, {useNewUrlParser: true}, function(err, db){});
 

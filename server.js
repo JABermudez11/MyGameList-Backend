@@ -1,8 +1,16 @@
 const express = require('express');
 const app = express();
-const router = express.Router();
-const port = process.env.PORT || 4000;
+const mongoose = require('mongoose');
 
+// mongo connector
+const dbURI = "mongodb+srv://test1:test1@game-data.xi8ae.mongodb.net/<dbname>?retryWrites=true&w=majority"
+mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
+const db = mongoose.connection
+db.on('open', () => {
+    console.log("connected...")
+})
+
+// to allow express to use json
 app.use(express.json())
 
 const gameRouter = require('./routes/games')
@@ -15,7 +23,6 @@ app.get('/', (req, res) => {
 app.get('/games', (req, res) => {
     res.send("Hello smort")
 })
-
 
 app.listen(4000, () => {
     console.log('Server Started')
