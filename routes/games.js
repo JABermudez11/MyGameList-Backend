@@ -1,14 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const Game = require('../models/game')
+
 // index
 router.get('/', async(req, res) => {
-    try{
-        const games = await Game.find()
-        res.json(games)
-    }catch(err){
-        res.send('error ' + err)
-    }
+    console.log("games get request hit")
+    res.send("get request succesful")
+    console.log(req.headers);
+    // res.setHeader('Content-Type', 'text/html');
+    // try{
+    //     const games = await Game.find()
+    //     res.json(games)
+    // }catch(err){
+    //     res.send('error ' + err)
+    // }
 })
 
 router.post('/', async(req, res) => {
