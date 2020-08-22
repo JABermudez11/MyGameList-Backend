@@ -3,6 +3,7 @@ const app = express();
 const router = express.Router();
 const port = process.env.PORT || 4000;
 
+app.use(express.json())
 
 const gameRouter = require('./routes/games')
 app.use('/games', gameRouter)
