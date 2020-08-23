@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+require("dotenv").config()
 
 // mongo connector
-const dbURI = "mongodb+srv://test1:test1@game-data.xi8ae.mongodb.net/<dbname>?retryWrites=true&w=majority"
-mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGOURI, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection
 db.on('open', () => {
     console.log("connected...")
