@@ -1,13 +1,16 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser'); 
 const mongoose = require('mongoose');
-require("dotenv").config()
+require('dotenv').config()
+
+app.use(bodyParser.json()); 
 
 // mongo connector
 mongoose.connect(process.env.MONGOURI, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection
 db.on('open', () => {
-    console.log("connected...")
+    console.log("db connected...")
 })
 
 // to allow express to use json
