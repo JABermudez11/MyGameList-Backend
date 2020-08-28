@@ -24,23 +24,25 @@ router.get('/', async(req, res) => {
     // }
 })
 
-router.post('/', (req, res) => {
-    // const game = new Game({
-    //     title: req.body.title,
-    //     description: req.body.description,
-    //     genre: req.body.genre,
-    //     release_date: req.body.release_date
-    // })
-    game = req.body
+router.post('/', async (req, res) => {
+    const game = new Game({
+        title: req.body.title,
+        description: req.body.description,
+        genre: req.body.genre,
+        release_date: req.body.release_date
+    })
+    // game = req.body
     console.log("post request sent to games")
     console.log(game)
     console.log(game.title)
-    // try{
-    //     const g1 = await game.save()
-    //     res.json(g1)
-    // }catch(err){
-    //     res.send('Error '+ err)
-    // }
+    
+    try{
+        const g1 = await game.save()
+        res.json(g1)
+    }catch(err){
+        res.send('Error '+ err)
+    }
+    
 })
 
 module.exports = router
