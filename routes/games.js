@@ -34,6 +34,7 @@ router.post('/', (req, res) => {
     game = req.body
     console.log("post request sent to games")
     console.log(game)
+    console.log(game.title)
     // try{
     //     const g1 = await game.save()
     //     res.json(g1)

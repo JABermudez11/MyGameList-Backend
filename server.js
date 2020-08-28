@@ -6,6 +6,8 @@ require('dotenv').config()
 
 app.use(bodyParser.json()); 
 
+const PORT = process.env.PORT || 4000
+
 // mongo connector
 mongoose.connect(process.env.MONGOURI, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection
@@ -27,6 +29,6 @@ app.get('/games', (req, res) => {
     res.send("Hello smort")
 })
 
-app.listen(4000, () => {
-    console.log('Server Started')
+app.listen(PORT, () => {
+    console.log(`Server started on port:${PORT}`)
 })
