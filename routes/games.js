@@ -6,12 +6,13 @@ const Game = require('../models/game')
 router.get('/', async(req, res) => {
     console.log("games get request hit!")
     res.send("get request succesful")
-    console.log(req.headers);
+    // console.log(req.headers);
 
     const game = await Game.find()
 
     if (game) {
         console.log(game)
+        // res.json(game)
     } else {
         res.redirect('/')
     }
@@ -37,12 +38,12 @@ router.post('/', async (req, res) => {
     console.log(game.title)
     
     try{
-        const g1 = await game.save()
-        res.json(g1)
+        const recentGame = await game.save()
+        res.json(recentGame)
     }catch(err){
         res.send('Error '+ err)
     }
-    
+
 })
 
 module.exports = router
