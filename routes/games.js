@@ -50,6 +50,16 @@ router.post('/', async (req, res) => {
 
 })
 
+// incomplete
+router.patch('/:id', async(req, res) => {        
+    try{
+        const game = await Game.findById(req.params.id)
+        res.json(game)
+    } catch(err) {
+        res.send('Error: '+ err)
+    }
+})
+
 router.delete('/:id', async (req, res) => {
     try {
         const game = await Game.findById(req.params.id)
