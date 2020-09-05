@@ -45,13 +45,19 @@ router.post('/', async (req, res) => {
         }
         
     }catch(err){
-        res.send('Error '+ err)
+        res.send('Error: '+ err)
     }
 
 })
 
-router.patch('/:id', async (req, res) => {
-    
+router.delete('/:id', async (req, res) => {
+    try {
+        const game = await Game.findById(req.params.id)
+        await game.remove()
+        res.send("Game succesfully deleted")
+    } catch (err) {
+        res.send('Error: ' + err)
+    }
 })
 
 module.exports = router
