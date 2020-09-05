@@ -13,10 +13,11 @@ router.get('/', async(req, res) => {
     }   
 })
 
-router.get('/', async(req, res) => {
+router.get('/:id', async(req, res) => {        
+
     try{
-        const game = await Game.find()
-        
+        const game = await Game.findById(req.params.id)
+        res.json(game)
     } catch(err) {
         res.send('Error: '+ err)
     }
@@ -49,8 +50,8 @@ router.post('/', async (req, res) => {
 
 })
 
-router.put('/:gameId', async (req, res) => {
-
+router.patch('/:id', async (req, res) => {
+    
 })
 
 module.exports = router
