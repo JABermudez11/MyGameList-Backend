@@ -7,7 +7,8 @@ const gameSchema = new mongoose.Schema(
         description: {type: String},
         genre: {type: String},
         rating: {type: Number},
-        release_date: {type: Date}
+        release_date: {type: Date},
+        user: {type: String}
     }
 )
 module.exports = mongoose.model('Game', gameSchema);
